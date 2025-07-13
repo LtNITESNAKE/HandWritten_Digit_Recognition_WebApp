@@ -46,4 +46,6 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run()  
+# setting for vercel below line should be use in place on empty bracket when running offline on local machine     
+# host='0.0.0.0', port=5000, debug=True
