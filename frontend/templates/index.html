@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="main-card">
+            <h1>Handwritten Digit Recognition</h1>
+            <div class="drawing-area">
+                <canvas id="drawingCanvas" width="280" height="280"></canvas>
+                <div class="controls">
+                    <button id="clear">Clear Canvas</button>
+                    <button id="predict">Predict Digit</button>
+                </div>
+            </div>
+            <div class="prediction-result">
+                <h2>Prediction: <span id="prediction">-</span></h2>
+                <div id="confidence"></div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="about-content">
+                <h2>About This Project</h2>
+                <p>This Handwritten Digit Recognition project uses deep learning to recognize digits in real-time. Draw a single digit (0-9) and watch the AI predict it instantly!</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">💡</span>
+                        <h3>Real-time Prediction</h3>
+                        <p>Instant feedback as you draw</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <h3>High Accuracy</h3>
+                        <p>Trained on MNIST dataset</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🧠</span>
+                        <h3>Deep Learning</h3>
+                        <p>CNN architecture</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <h3>Responsive</h3>
+                        <p>Works on all devices</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">HTML5 Canvas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
