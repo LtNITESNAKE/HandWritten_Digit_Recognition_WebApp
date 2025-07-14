@@ -4,14 +4,12 @@ import tensorflow as tf
 import numpy as np
 import os
 
-app = Flask(__name__, 
-    template_folder='../../frontend/templates',
-    static_folder='../../frontend/static'
-)
+# Initialize Flask app with correct static and template paths
+app = Flask(__name__)
 CORS(app)
 
-# Load the trained model
-model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'digit_model.h5')
+# Adjust model path for Vercel deployment
+model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'model', 'digit_model.h5')
 model = tf.keras.models.load_model(model_path)
 
 @app.route('/')
@@ -20,7 +18,8 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    try:        # Get the image data from the request
+    try:
+        # Get the image data from the request
         data = request.json.get('image')
         
         if not data:
@@ -45,7 +44,6 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# For local development
 if __name__ == '__main__':
-    app.run()  
-# setting for vercel below line should be use in place on empty bracket when running offline on local machine     
-# host='0.0.0.0', port=5000, debug=True
+    app.run(debug=True)
