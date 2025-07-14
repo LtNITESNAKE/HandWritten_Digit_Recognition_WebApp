@@ -5,7 +5,11 @@
       "src": "backend/api/app.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "50mb"
+        "maxLambdaSize": "50mb",
+        "includeFiles": [
+          "backend/api/**",
+          "backend/model/digit_model.h5"
+        ]
       }
     }
   ],

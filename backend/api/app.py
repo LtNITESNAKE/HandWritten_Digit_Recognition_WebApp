@@ -8,9 +8,15 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Adjust model path for Vercel deployment
-model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'model', 'digit_model.h5')
-model = tf.keras.models.load_model(model_path)
+# Load model lazily
+model = None
+
+def load_model():
+    global model
+    if model is None:
+        model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'model', 'digit_model.h5')
+        model = tf.keras.models.load_model(model_path)
+    return model
 
 @app.route('/')
 def home():
@@ -31,7 +37,8 @@ def predict():
         # Ensure values are in [0, 1] range
         image = np.clip(image, 0, 1)
         
-        # Make prediction
+        # Load model if not loaded and make prediction
+        model = load_model()
         prediction = model.predict(image)
         predicted_digit = int(np.argmax(prediction[0]))
         confidence = float(np.max(prediction[0])) * 100
