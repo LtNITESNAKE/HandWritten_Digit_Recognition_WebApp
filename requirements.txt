@@ -1,7 +1,5 @@
---no-binary :all:
-wheel==0.41.2
-setuptools==68.0.0
 Flask==2.0.1
+Werkzeug==2.0.3
 numpy==1.21.2
 tensorflow-cpu==2.7.0
 Pillow==8.3.1

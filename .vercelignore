@@ -1,0 +1,11 @@
+.git
+__pycache__
+*.pyc
+.env
+.env.local
+.venv
+venv
+.vercel
+*.h5
+*.npy
+.pytest_cache
